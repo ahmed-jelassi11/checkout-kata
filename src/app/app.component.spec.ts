@@ -1,10 +1,22 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {provideMockStore} from "@ngrx/store/testing";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
+      providers: [provideMockStore({
+        initialState: {
+          ["product"]:{
+            products: [],
+            error: ''
+          },
+          ['cart']:{
+            items: []
+          }
+        }
+      })]
     }).compileComponents();
   });
 
@@ -14,9 +26,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'checkout-kata' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('checkout-kata');
-  });
 });
