@@ -1,0 +1,17 @@
+@if (products$ | async; as products) {
+  <div class="container flex">
+    <div class="categories-filter p-2">
+      <label>Filtres
+        <select [formControl]="categoryFilter">
+          <option [value]="null" selected disabled>Catégorie</option>
+          <option *ngFor="let category of Object.keys(Category)" [value]="category">{{ category }}</option>
+        </select>
+      </label>
+    </div>
+    <div class="responsive-grid">
+      @for (product of products; track product.id) {
+        <app-product-item [product]="product"></app-product-item>
+      }
+    </div>
+  </div>
+}

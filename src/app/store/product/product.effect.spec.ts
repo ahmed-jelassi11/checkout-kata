@@ -1,4 +1,4 @@
-import {Observable, of} from "rxjs";
+import {Observable, of, throwError} from "rxjs";
 import {Action} from "@ngrx/store";
 import {ProductEffects} from "./product.effects";
 import {TestBed} from "@angular/core/testing";
@@ -9,6 +9,8 @@ import {ProductActions} from "./product.action";
 import {Product} from "../../models/product.interface";
 import {cold, hot} from "jasmine-marbles";
 import {Category} from "../../models/category.enum";
+import {ProductState} from "./product.state";
+import {productReducer} from "./product.reducer";
 
 describe('ProductEffects', () => {
   let actions$: Observable<Action>;
@@ -24,6 +26,14 @@ describe('ProductEffects', () => {
       ]
     });
     effects = TestBed.inject(ProductEffects);
+  });
+  it('should load', async () => {
+    const state: ProductState = {products:[], error:''};
+
+    const action = ProductActions.load();
+    const result = productReducer(state, action);
+
+    expect(result).toEqual(state);
   });
 
   it('should load products with success', () => {
@@ -46,6 +56,23 @@ describe('ProductEffects', () => {
 
     expect(effects.load$).toBeObservable(expected$);
     verify(mockProductService.getAll()).once();
+  });
+
+  it('should dispatch loadError when load fails', () => {
+    const error = 'fetch fail';
+
+    when(mockProductService.getAll()).thenReturn(
+      throwError(() => new Error(error))
+    );
+
+    actions$ = hot('a', {
+      a: ProductActions.load(),
+    });
+    const expected = cold('b', {
+      b: ProductActions.loadFail({ error }),
+    });
+
+    expect(effects.load$).toBeObservable(expected);
   });
 
 });

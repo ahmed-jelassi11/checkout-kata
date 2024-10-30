@@ -1,0 +1,36 @@
+.text{
+  position: relative;
+  right: 6.5rem;
+}
+.navigation-container{
+  display: flex;
+  flex-direction: row;
+  align-content: start;
+  justify-items: start;
+}
+.border-box{
+  border: #191919 solid 1px;
+  border-radius: 1rem;
+  position: relative;
+  right: 6.5rem;
+}
+.top{
+  top: 0.8rem;
+}
+.cart{
+  position: relative;
+  right: 6.5rem;
+}
+.badge{
+  padding: 0 3px;
+  background-color: chocolate;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 10px;
+  position: relative;
+  top: -2rem;
+  right: 5rem;
+  width: 0.7rem;
+
+}

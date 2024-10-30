@@ -1,0 +1,82 @@
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 85%;
+  margin-top: 2rem;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #e4d9ed;
+  color: dimgrey;
+}
+
+.flex-container {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  flex-wrap: wrap;
+}
+.cart-header{
+  justify-content: end;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+
+}
+
+.width-85{
+  width: 85%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 100hv;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.empty-cart {
+  width: 25%;
+}
+
+.total {
+  background-color: #29253b;
+  border: white 1px;
+  color: white;
+}
+
+.hide {
+  border-color: white !important;
+  background-color: white !important;
+}
+
+.bordered-box {
+  cursor: pointer;
+  color: dimgrey;
+  border: 1px solid dimgrey;
+  border-radius: 5px;
+  padding: 1rem;
+}
+.m-0{
+  margin-block-start: 0 !important;
+}

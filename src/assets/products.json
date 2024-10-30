@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "productName": "",
+    "productName": "Steak de Boeuf",
     "price": 1.76,
     "quantity": 7,
     "isImported": true,
@@ -9,7 +9,7 @@
   },
   {
     "id": 14,
-    "productName": "Apple - Fuji",
+    "productName": "Pommes",
     "price": 4.37,
     "quantity": 3,
     "isImported": true,
@@ -17,7 +17,7 @@
   },
   {
     "id": 17,
-    "productName": "Muffin Batt - Carrot Spice",
+    "productName": "Muffin",
     "price": 3.84,
     "quantity": 5,
     "isImported": true,
@@ -33,7 +33,7 @@
   },
   {
     "id": 13,
-    "productName": "Sponge Cake Mix - Chocolate",
+    "productName": "Cake au Chocolat",
     "price": 1.4,
     "quantity": 10,
     "isImported": true,
@@ -41,7 +41,7 @@
   },
   {
     "id": 7,
-    "productName": "Cheese - Goat",
+    "productName": "Fromage brebis",
     "price": 3.81,
     "quantity": 1,
     "isImported": false,
@@ -49,7 +49,7 @@
   },
   {
     "id": 18,
-    "productName": "Wine - Touraine Azay - Le - Rideau",
+    "productName": "Vin",
     "price": 6.02,
     "quantity": 4,
     "isImported": true,
@@ -65,7 +65,7 @@
   },
   {
     "id": 12,
-    "productName": "codeine",
+    "productName": "Codeine",
     "price": 7.86,
     "quantity": 3,
     "isImported": true,
@@ -73,7 +73,7 @@
   },
   {
     "id": 5,
-    "productName": "Asperin",
+    "productName": "Aspirine",
     "price": 6.85,
     "quantity": 3,
     "isImported": false,
@@ -121,7 +121,7 @@
   },
   {
     "id": 16,
-    "productName": "USB Flash Drive 64GB",
+    "productName": "Clé USB 64GB",
     "price": 9.18,
     "quantity": 8,
     "isImported": true,
@@ -129,7 +129,7 @@
   },
   {
     "id": 9,
-    "productName": "Wireless Keyboard",
+    "productName": "Clavier sans fil",
     "price": 9.16,
     "quantity": 5,
     "isImported": false,

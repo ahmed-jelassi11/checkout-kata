@@ -7,8 +7,8 @@ describe('Cart Selectors', () => {
   beforeEach(() => {
     cartState = {
       items: [
-        { id: 1, name: 'product1', priceHT: 100, tax: 20, quantity: 2 },
-        { id: 2, name: 'product2', priceHT: 200, tax: 30, quantity: 1 },
+        { id: 1, name: 'product1', priceHT: 100, tax: 20, priceTTC: 120, quantity: 2 },
+        { id: 2, name: 'product2', priceHT: 200, tax: 30, priceTTC: 230, quantity: 1 },
       ],
     };
   });
@@ -39,4 +39,20 @@ describe('Cart Selectors', () => {
     const result = CartSelectors.selectCartTotalTTC.projector(totalHT, totalTaxes);
     expect(result).toBe(470);
   });
+
+  describe("With Empy cart", ()=>{
+    it('should get 0 as cart items quantity',()=>{
+      const result = CartSelectors.selectCartItemsQuantity.projector([]);
+      expect(result).toBe(0);
+    });
+    it('should get 0 as cart total HT',()=>{
+      const result = CartSelectors.selectCartTotalHT.projector([]);
+      expect(result).toBe(0);
+    });
+    it('should get 0 as cart total taxes',()=>{
+      const result = CartSelectors.selectCartTotalTaxes.projector([]);
+      expect(result).toBe(0);
+    });
+  })
+
 });

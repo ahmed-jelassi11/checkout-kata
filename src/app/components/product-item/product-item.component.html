@@ -1,0 +1,27 @@
+@if (product) {
+  <div class="product-card">
+    <div class="product-card__content">
+      <div class="block-product">
+        <h2 class="block-name">{{ product.productName }}</h2>
+
+        <p class="block-category<">
+          Catégorie: {{ product.category }}
+        </p>
+
+        <div class="block-quantity">
+          <div *ngIf="product.quantity>0">Qte: {{ product.quantity }}</div>
+          <div *ngIf="product.quantity<=0">Non disponible</div>
+        </div>
+        <div class="block-price">
+          Prix: <p
+          class="block-price__currency">{{ product.price |currency: 'EUR': 'symbol':'1.2-2' }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="block-add-to-cart">
+      <button class="button-addToCard" [disabled]="product.quantity==0" (click)="addToCart(product,1)">
+        Ajouter au panier
+      </button>
+    </div>
+  </div>
+}

@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: white;
+  margin: 0 !important;
+  overflow-x: hidden;
+
+}
+.router-link{
+  cursor: pointer;
+}
+
+.p-2{
+  padding: 2rem;
+}
+.ml-2{
+  margin-left: 2rem;
+}
+.primary-text{
+  color: #29253b
+}
+

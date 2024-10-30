@@ -27,6 +27,7 @@ describe('Cart reducers', () => {
       id: 1,
       name: 'product 1',
       priceHT: 1,
+      priceTTC: 1,
       tax: 0,
       quantity: 2
     }]);
@@ -37,6 +38,7 @@ describe('Cart reducers', () => {
       id: 1,
       name: "product 1",
       priceHT: 1,
+      priceTTC: 1,
       tax: 0,
       quantity: 1
     };
@@ -45,7 +47,7 @@ describe('Cart reducers', () => {
     };
 
 
-    const action = CartActions.remove({product: product});
+    const action = CartActions.remove({productId: 1});
     const result = reducer(state, action);
     expect(result.items.length).toBe(0)
   });
@@ -54,6 +56,7 @@ describe('Cart reducers', () => {
       id: 1,
       name: "product 1",
       priceHT: 1,
+      priceTTC: 1,
       tax: 0,
       quantity: 1
     };
@@ -61,6 +64,7 @@ describe('Cart reducers', () => {
       id: 2,
       name: "product 2",
       priceHT: 1,
+      priceTTC: 1,
       tax: 0,
       quantity: 1
     };
@@ -74,12 +78,13 @@ describe('Cart reducers', () => {
     expect(result.items.length).toBe(0)
   });
 
-  it('should update increase the quantity of an item', ()=>{
+  it('should update the quantity of an item onAdd', () => {
 
     const cartItem: CartItem = {
       id: 1,
       name: "product 1",
       priceHT: 1,
+      priceTTC: 1,
       tax: 0,
       quantity: 3
     };
@@ -87,23 +92,25 @@ describe('Cart reducers', () => {
       id: 2,
       name: "product 2",
       priceHT: 1,
+      priceTTC: 1,
       tax: 0,
       quantity: 1
     };
     const state: CartState = {
       items: [cartItem, cartItem2]
     };
-    const action = CartActions.modifyQuantity({product: product, modification: +1});
+    const action = CartActions.add({product: product, quantity: 1});
     const result = reducer(state, action);
-    expect(result.items.find(item=> item.id=== product.id)?.quantity).toBe(4)
+    expect(result.items.find(item => item.id === product.id)?.quantity).toBe(4)
   });
 
-  it('should update decrease the quantity of an item', ()=>{
+  it('should update increase the quantity of an item', () => {
 
     const cartItem: CartItem = {
       id: 1,
       name: "product 1",
       priceHT: 1,
+      priceTTC: 1,
       tax: 0,
       quantity: 3
     };
@@ -111,15 +118,42 @@ describe('Cart reducers', () => {
       id: 2,
       name: "product 2",
       priceHT: 1,
+      priceTTC: 1,
       tax: 0,
       quantity: 1
     };
     const state: CartState = {
       items: [cartItem, cartItem2]
     };
-    const action = CartActions.modifyQuantity({product: product, modification: -1});
+    const action = CartActions.modifyQuantity({productId: 1, modification: +1});
     const result = reducer(state, action);
-    expect(result.items.find(item=> item.id=== product.id)?.quantity).toBe(2)
+    expect(result.items.find(item => item.id === product.id)?.quantity).toBe(4)
+  });
+
+  it('should update decrease the quantity of an item', () => {
+
+    const cartItem: CartItem = {
+      id: 1,
+      name: "product 1",
+      priceHT: 1,
+      priceTTC: 1,
+      tax: 0,
+      quantity: 3
+    };
+    const cartItem2: CartItem = {
+      id: 2,
+      name: "product 2",
+      priceHT: 1,
+      priceTTC: 1,
+      tax: 0,
+      quantity: 1
+    };
+    const state: CartState = {
+      items: [cartItem, cartItem2]
+    };
+    const action = CartActions.modifyQuantity({productId: 1, modification: -1});
+    const result = reducer(state, action);
+    expect(result.items.find(item => item.id === product.id)?.quantity).toBe(2)
   });
 
 });

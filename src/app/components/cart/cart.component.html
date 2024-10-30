@@ -1,0 +1,47 @@
+<div class="container p-2" *ngIf="!(isEmpty$ | async) else emptyCart">
+  <div class="cart-header width-85">
+    <div class="bordered-box" (click)="clearCart()">Vider Panier</div>
+  </div>
+  <table *ngIf="cartItems$| async as cartItems else emptyCart">
+    <thead>
+    <tr>
+      <th>Element</th>
+      <th>Quantité</th>
+      <th>Prix unité HT</th>
+      <th>Taxe</th>
+      <th>Prix unité TTC</th>
+      <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of cartItems">
+      <td>{{ item.name }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.priceHT | currency: 'EUR': 'symbol':'1.2-2' }}</td>
+      <td>{{ item.tax | currency: 'EUR': 'symbol':'1.2-2' }}</td>
+      <td>{{ item.priceTTC | currency: 'EUR': 'symbol':'1.2-2' }}</td>
+      <td><b>{{ item.priceTTC * item.quantity | currency: 'EUR': 'symbol':'1.2-2' }}</b></td>
+      <td><img class="router-link" ngSrc="assets/trash.svg"
+               aria-hidden="true" alt="Supprimer un produit" height="16" width="16" (click)="remove(item.id)"/></td>
+    </tr>
+    <tr>
+      <td class="hide"></td>
+      <td class="hide"></td>
+      <td class="hide"></td>
+      <td class="total">Total Taxes: {{ totalTaxes$ | async |currency: 'EUR': 'symbol':'1.2-2' }}</td>
+      <td class="hide"></td>
+      <td class="total">Total TTC: {{ totalTTC$ | async |currency: 'EUR': 'symbol':'1.2-2' }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="flex-container width-85">
+    <h4 class="bordered-box">Passer au paiement</h4>
+  </div>
+</div>
+<ng-template #emptyCart>
+  <div class="container">
+    <img src="assets/empty-cart.png" class="empty-cart">
+    <h2 class="m-0 primary">Votre Panier est vide</h2>
+    <h4 class="bordered-box m-0" [routerLink]="'products'">Découvrez nos produits</h4>
+  </div>
+</ng-template>

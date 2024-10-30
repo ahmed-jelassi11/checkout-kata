@@ -51,5 +51,53 @@ describe('ProductSelector', () => {
     });
   });
 
+  it('should select products by category',()=> {
+    const products = [{
+      id: 1,
+      productName: 'medicine',
+      category: Category.Medicine,
+      isImported: false,
+      price: 1,
+      quantity: 1
+    },{
+      id: 2,
+      productName: 'food',
+      category: Category.Food,
+      isImported: false,
+      price: 2,
+      quantity: 2
+    }];
+    const expected = [{
+      id: 2,
+      productName: 'food',
+      category: Category.Food,
+      isImported: false,
+      price: 2,
+      quantity: 2
+    }];
+    const result = ProductSelectors.selectProductsByCategory(Category.Food).projector(products);
+    expect(result).toEqual(expected);
+  });
+
+  it('should select all products if category is null',()=> {
+    const products = [{
+      id: 1,
+      productName: 'medicine',
+      category: Category.Medicine,
+      isImported: false,
+      price: 1,
+      quantity: 1
+    },{
+      id: 2,
+      productName: 'food',
+      category: Category.Food,
+      isImported: false,
+      price: 2,
+      quantity: 2
+    }];
+    const result = ProductSelectors.selectProductsByCategory(null).projector(products);
+    expect(result).toEqual(products);
+  })
+
 
 });

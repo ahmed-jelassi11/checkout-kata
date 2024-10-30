@@ -48,3 +48,15 @@ export function getProductArrayFixture() {
   } as Product);
   return products;
 }
+
+export function getProductFixture(){
+  return {
+    id: 1,
+    productName: 'food',
+    category: Category.Food,
+    isImported: false,
+    price: 20,
+    tax: 0,
+    quantity: 2
+  }
+}

@@ -8,14 +8,6 @@ describe('Product reducers', () => {
 
   const reducer = productReducer;
 
-  /*it('should load request', async () => {
-    const state: ProductState = productInitialState;
-
-    const action = ProductActions.load();
-    const result = reducer(state, action);
-
-  });*/
-
   it('should load success', () => {
     const state: ProductState = productInitialState;
     const products: Product[] = [{

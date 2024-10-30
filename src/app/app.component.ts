@@ -1,15 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterOutlet} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {ProductSelectors} from "./store/product/product.selector";
-import {AsyncPipe, NgIf} from "@angular/common";
-import {ProductEffects} from "./store/product/product.effects";
 import {ProductActions} from "./store/product/product.action";
+import {ProductListComponent} from "./components/product-list/product-list.component";
+import {TopBarComponent} from "./components/top-bar/top-bar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ProductListComponent, TopBarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
